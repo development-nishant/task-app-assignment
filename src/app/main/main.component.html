@@ -6,20 +6,19 @@
     <span fxFlex></span>
     <label>My Tasks : {{myTasksCount}} | Team Tasks : {{teamTasksCount}}</label>
 </mat-toolbar>
-<div class="full-height">
-    <mat-drawer-container class="example-container" fxFlexFill>
-        <mat-drawer #drawer class="example-sidenav " mode="side">
 
-            <mat-list role="list">
-                <mat-list-item role="listitem" routerLink="/home" routerLinkActive="active">Home</mat-list-item>
-                <mat-list-item role="listitem" routerLink="/tasks" routerLinkActive="active">Tasks</mat-list-item>
-            </mat-list>
+<mat-drawer-container fxFlexFill>
+    <mat-drawer #drawer class="example-sidenav " mode="side">
 
-        </mat-drawer>
+        <mat-list role="list">
+            <mat-list-item role="listitem" routerLink="/home" routerLinkActive="active">Home</mat-list-item>
+            <mat-list-item role="listitem" routerLink="/tasks" routerLinkActive="active">Tasks</mat-list-item>
+        </mat-list>
 
-        <router-outlet>
-        </router-outlet>
+    </mat-drawer>
+
+    <router-outlet>
+    </router-outlet>
 
 
-    </mat-drawer-container>
-</div>
+</mat-drawer-container>

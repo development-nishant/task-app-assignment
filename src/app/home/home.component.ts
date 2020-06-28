@@ -12,12 +12,17 @@ export class HomeComponent implements OnInit {
   constructor(private homeService : HomeService , private httpClient: HttpClient) {
 
   }
-  public tasksList : any =[];
+  public globalTasks : any =[];
+  public personalTasks : any =[];
+  public leaderTasks : any =[];
 
   ngOnInit() {
 
-   this.tasksList = this.homeService.getTasksList().subscribe(resp => {
-     this.tasksList = resp;
+   this.homeService.getTasksList().subscribe(resp => {
+     this.globalTasks = resp['global'];
+     this.personalTasks = resp['personal'];
+     this.leaderTasks = resp['leader'];
+     
     });
    
   }
