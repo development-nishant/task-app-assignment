@@ -1,0 +1,24 @@
+#container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background-color: #f6f6f6;
+}
+
+#task-list {
+    width: 33%;
+    margin: 10px;
+    background-color: white;
+}
+
+.complete-color {
+    color: #229954;
+}
+
+.incomplete-color {
+    color: #EC7063;
+}
+
+.creator-color {
+    color: #5F6A6A
+}

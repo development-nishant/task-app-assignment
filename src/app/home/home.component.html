@@ -1,0 +1,108 @@
+<div id="container">
+
+    <div id="task-list">
+        <mat-toolbar>
+            <h1 class="md-toolbar-tools">Global Tasks</h1>
+        </mat-toolbar>
+        <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+
+            <mat-card class="card-picture" *ngFor="let task of tasksList;index as idx;">
+                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+                    <span fxFlex="80%"></span>
+                </mat-card-title>
+                <mat-card-content>
+
+                    <div>
+
+                        <span fxFlex="100%"> <b>{{idx+1}}. </b>{{task.text}}</span>
+                    </div>
+                    <br>
+                    <div>
+                        <label fxFlex="50%"> Start : {{task.start}}</label>
+                        <label fxFlex="50%"> End : {{task.end}}</label>
+                    </div>
+                    <br>
+                    <div>
+                        <label fxFlex="80%" class="creator-color"> <i>Created by   {{task.creator}} </i></label>
+                        <label fxFlex="20%" class="{{task.isCompleted ? 'complete-color' : 'incomplete-color'}}"> {{task.isCompleted ? 'Completed' : 'Incomplete'}} </label>
+                        <!--  <label fxFlex="30%"> <img src="../../assets/icons/ic_complete.png" alt="Girl in a jacket"> {{task.isCompleted}}</label>-->
+
+                        <!--  <mat-icon fxFlex="10%" class="incomplete-color" class1="{{task.isCompleted ? 'incomplete-color' : 'complete-color'}}">{{task.isCompleted ? 'check_circle' : 'cancel'}}</mat-icon>-->
+                    </div>
+                </mat-card-content>
+
+            </mat-card>
+        </div>
+
+    </div>
+    <div id="task-list">
+        <mat-toolbar>
+            <h1 class="md-toolbar-tools">Personal Tasks</h1>
+        </mat-toolbar>
+        <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+
+            <mat-card class="card-picture" *ngFor="let task of tasksList;index as idx;">
+                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+                    <span fxFlex="80%"></span>
+                </mat-card-title>
+                <mat-card-content>
+
+                    <div>
+
+                        <span fxFlex="100%"> <b>{{idx+1}}. </b>{{task.text}}</span>
+                    </div>
+                    <br>
+                    <div>
+                        <label fxFlex="50%"> Start : {{task.start}}</label>
+                        <label fxFlex="50%"> End : {{task.end}}</label>
+                    </div>
+                    <br>
+                    <div>
+                        <label fxFlex="80%" class="creator-color"> <i>Created by   {{task.creator}} </i></label>
+                        <label fxFlex="20%" class="{{task.isCompleted ? 'complete-color' : 'incomplete-color'}}"> {{task.isCompleted ? 'Completed' : 'Incomplete'}} </label>
+                        <!--  <label fxFlex="30%"> <img src="../../assets/icons/ic_complete.png" alt="Girl in a jacket"> {{task.isCompleted}}</label>-->
+
+                        <!--  <mat-icon fxFlex="10%" class="incomplete-color" class1="{{task.isCompleted ? 'incomplete-color' : 'complete-color'}}">{{task.isCompleted ? 'check_circle' : 'cancel'}}</mat-icon>-->
+                    </div>
+                </mat-card-content>
+
+            </mat-card>
+        </div>
+
+    </div>
+    <div id="task-list">
+        <mat-toolbar>
+            <h1 class="md-toolbar-tools">Tasks posted by team leader</h1>
+        </mat-toolbar>
+        <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+
+            <mat-card class="card-picture" *ngFor="let task of tasksList;index as idx;">
+                <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+                    <span fxFlex="80%"></span>
+                </mat-card-title>
+                <mat-card-content>
+
+                    <div>
+
+                        <span fxFlex="100%"> <b>{{idx+1}}. </b>{{task.text}}</span>
+                    </div>
+                    <br>
+                    <div>
+                        <label fxFlex="50%"> Start : {{task.start}}</label>
+                        <label fxFlex="50%"> End : {{task.end}}</label>
+                    </div>
+                    <br>
+                    <div>
+                        <label fxFlex="80%" class="creator-color"> <i>Created by   {{task.creator}} </i></label>
+                        <label fxFlex="20%" class="{{task.isCompleted ? 'complete-color' : 'incomplete-color'}}"> {{task.isCompleted ? 'Completed' : 'Incomplete'}} </label>
+                        <!--  <label fxFlex="30%"> <img src="../../assets/icons/ic_complete.png" alt="Girl in a jacket"> {{task.isCompleted}}</label>-->
+
+                        <!--  <mat-icon fxFlex="10%" class="incomplete-color" class1="{{task.isCompleted ? 'incomplete-color' : 'complete-color'}}">{{task.isCompleted ? 'check_circle' : 'cancel'}}</mat-icon>-->
+                    </div>
+                </mat-card-content>
+
+            </mat-card>
+        </div>
+
+    </div>
+</div>
