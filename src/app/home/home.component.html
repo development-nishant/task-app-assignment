@@ -5,9 +5,9 @@
             <h1 class="md-toolbar-tools">Global Tasks</h1>
         </mat-toolbar>
         <div id="task-list">
-            <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+            <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center">
 
-                <mat-card class="card-picture" *ngFor="let task of globalTasks;index as idx;">
+                <mat-card id="task-card" *ngFor="let task of globalTasks;index as idx;">
                     <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
                         <span fxFlex="80%"></span>
                     </mat-card-title>
@@ -44,7 +44,7 @@
         <div id="task-list">
             <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
 
-                <mat-card class="card-picture" *ngFor="let task of personalTasks;index as idx;">
+                <mat-card id="task-card" *ngFor="let task of personalTasks;index as idx;">
                     <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
                         <span fxFlex="80%"></span>
                     </mat-card-title>
@@ -82,7 +82,7 @@
         <div id="task-list">
             <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
 
-                <mat-card class="card-picture" *ngFor="let task of leaderTasks;index as idx;">
+                <mat-card id="task-card" *ngFor="let task of leaderTasks;index as idx;">
                     <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
                         <span fxFlex="80%"></span>
                     </mat-card-title>
