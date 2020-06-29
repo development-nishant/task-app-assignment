@@ -1,23 +1,43 @@
 <div id="container">
     <div id="tast-list-panel">
         <mat-toolbar id="task-list-header">
+            <button mat-raised-button (click)="openDialog()">Create</button>
+
+            <span fxFlex="50%"></span>
             <h1 class="md-toolbar-tools">All Tasks </h1>
-            <span fxFlex="80%"></span>
+            <span fxFlex="50%"></span>
+
             <mat-form-field>
-                <mat-label>Filter</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Task Type" #input>
+                <mat-label>Task Type</mat-label>
+                <mat-select [(value)]="taskTypeFilterValue">
+                    <mat-option *ngFor="let fltr of taskFilter" [value]="fltr.value" (click)="filterTaskSelect($event)">
+                        {{fltr.viewValue}}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
+
         </mat-toolbar>
         <div id="task-list">
             <table id="task-list" mat-table [dataSource]="dataSource" matSort>
+                <tr mat-header-row *matHeaderRowDef="taskGridColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: taskGridColumns;let idx = index;"></tr>
 
-                <!-- ID Column -->
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="7">No data matching the filter</td>
+                </tr>
+
+                <ng-container matColumnDef="idx">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>No.</b> </th>
+                    <td mat-cell *matCellDef="let element; let idx = index; "> {{idx+1}} </td>
+                </ng-container>
+
                 <ng-container matColumnDef="text">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Task</b> </th>
                     <td mat-cell *matCellDef="let row"> {{row.text}} </td>
                 </ng-container>
 
-                <!-- ID Column -->
+
                 <ng-container matColumnDef="creator">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Creator</b> </th>
                     <td mat-cell *matCellDef="let row"> {{row.creator}} </td>
@@ -32,7 +52,7 @@
                 <!-- Color Column -->
                 <ng-container matColumnDef="end">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>End Date </b></th>
-                    <td mat-cell *matCellDef="let row" [style.color]="red"> {{row.end}} </td>
+                    <td mat-cell *matCellDef="let row"> {{row.end}} </td>
                 </ng-container>
 
                 <ng-container matColumnDef="isGlobal">
@@ -44,19 +64,16 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Posted by leader ? ? </b> </th>
                     <td mat-cell *matCellDef="let row"> {{row.isLeader}} </td>
                 </ng-container>
-
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Type </b></th>
+                    <td mat-cell *matCellDef="let row"> {{(row.isGlobal) ? 'Global':((!row.isGlobal && !row.isLeader)?"Personal":"")}} </td>
+                </ng-container>
                 <ng-container matColumnDef="isCompleted">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Completed ? </b></th>
-                    <td mat-cell *matCellDef="let row"> {{row.isCompleted}} </td>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Status </b></th>
+                    <td mat-cell *matCellDef="let row"> {{row.isCompleted ? 'Completed' :'Not completed'}} </td>
                 </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="taskGridColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: taskGridColumns;"></tr>
 
-                <!-- Row shown when there is no matching data. -->
-                <tr class="mat-row" *matNoDataRow>
-                    <td class="mat-cell" colspan="7">No data matching the filter "{{input.value}}"</td>
-                </tr>
             </table>
 
             <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>

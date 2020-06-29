@@ -14,10 +14,16 @@ import {TaskSharedService} from '../shared/task-shared.service';
   templateUrl: './task-page.component.html',
   styleUrls: ['./task-page.component.scss']
 })
+
 export class TaskPageComponent implements OnInit {
 
   taskGridColumns: string[] = ApplicationConfig.TASK_GRID_COLUMNS;
   dataSource: MatTableDataSource<Task>;
+  taskGridData : any = [];
+  taskFilter: any = ApplicationConfig.TASK_TYPE_FILTER;
+  taskTypeFilterValue : string ;
+
+  filterSelectObj = [];
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -28,22 +34,49 @@ export class TaskPageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.taskSharedService.getAllTasks().subscribe((resp)=>{
-      this.dataSource = new MatTableDataSource(resp);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
-  }
+    /* Following code will subcribe to previously stored tasklist observable...
+    and display the data in grid..this will not trigger additional API call to fetch the data..*/
 
-  applyFilter(event: Event) {
 
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    this.taskSharedService.centralTaskListRepoObservable.subscribe((tasks)=>{
+      this.loadDatainTaskGrid(tasks);
     }
+    );
+
   }
+
+  loadDatainTaskGrid(tasks : Task[]){
+    this.dataSource = new MatTableDataSource(tasks);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+  }
+
+  filterTaskSelect (event:Event){
+    debugger;
+
+    switch(this.taskTypeFilterValue) {
+      case "personal": {
+          let personalTasks = this.taskSharedService.centralTaskListRepoObservable
+         break;
+      }
+      case "global": {
+
+         break;
+      }
+      case "leader": {
+
+        break;
+      }
+
+      default: {
+
+         break;
+      }
+   }
+  }
+
+
 }
 
 

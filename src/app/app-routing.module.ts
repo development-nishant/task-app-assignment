@@ -7,10 +7,10 @@ import {TaskPageComponent} from './task-page/task-page.component';
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'tasks', component: TaskPageComponent },
-    { path: '**', component: TaskPageComponent },
-    { path: '',   redirectTo: '/home', pathMatch: 'full' }
+    { path: '',   redirectTo: '/home', pathMatch: 'full' },
+    { path: '**', component: HomeComponent },
   ];
-    
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

@@ -2,7 +2,7 @@
 
     <div id="tast-list-panel">
         <mat-toolbar id="task-list-header">
-            <h1 class="md-toolbar-tools">Global Tasks</h1>
+            <h1 class="md-toolbar-tools">Global</h1>
         </mat-toolbar>
         <div id="task-list">
             <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
@@ -39,7 +39,7 @@
 
     <div id="tast-list-panel">
         <mat-toolbar id="task-list-header">
-            <h1 class="md-toolbar-tools">Personal Tasks</h1>
+            <h1 class="md-toolbar-tools">Personal</h1>
         </mat-toolbar>
         <div id="task-list">
             <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
@@ -75,7 +75,7 @@
 
     <div id="tast-list-panel">
         <mat-toolbar id="task-list-header">
-            <h1 class="md-toolbar-tools"> Tasks listed by team leader</h1>
+            <h1 class="md-toolbar-tools"> Listed by leader</h1>
         </mat-toolbar>
         <div id="task-list">
             <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
@@ -97,7 +97,7 @@
                         <br>
                         <div>
                             <label fxFlex="80%" class="creator-color"> <i>Created by   {{task.creator}} </i></label>
-                            <label fxFlex="20%" class="{{task.isCompleted ? 'complete-color' : 'incomplete-color'}}"> {{task.isCompleted ? 'Completed' : 'Incomplete'}} </label>
+                            <label fxFlex="20%" class="{{task.isCompleted ? 'complete-color' : 'incomplete-color'}}"> {{task.isCompleted ? 'Completed' : 'Not completed'}} </label>
                             <!--  <label fxFlex="30%"> <img src="../../assets/icons/ic_complete.png" alt="Girl in a jacket"> {{task.isCompleted}}</label>-->
 
                             <!--  <mat-icon fxFlex="10%" class="incomplete-color" class1="{{task.isCompleted ? 'incomplete-color' : 'complete-color'}}">{{task.isCompleted ? 'check_circle' : 'cancel'}}</mat-icon>-->

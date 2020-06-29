@@ -1,5 +1,5 @@
 {
-	"tasks" : [ 
+	"tasks" : [
 		{
 			"text": "Make Test Plan for New Vehicle",
 			"isGlobal": true,
@@ -29,7 +29,7 @@
 		},
 		{
 			"text": "Ready the engine testing equipment",
-			"isGlobal": true,
+			"isGlobal": false,
 			"isLeader": false,
 			"creator": "Sheldon Cotrell",
 			"isCompleted": false,

@@ -11,18 +11,28 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TaskSharedService {
 
+  //Central location where all the tasks will be saved
+  private centralTaskListRepo = new BehaviorSubject<Task[]>([]);
+
+  //Observable from above task list which can be subscribed wherever required (task list/task grid)
+  public centralTaskListRepoObservable = this.centralTaskListRepo.asObservable();
+
   constructor(private httpClient: HttpClient) {
 
   }
 
-  getAllTasks(): Observable<Task[]> {
+  getAllTasks() : Observable<any> {
 
     return this.httpClient.get(ApplicationConfig.GET_TASKS_LIST_URL).pipe(
 
       map((response :any) => {
 
-        return (response && response.tasks ) ? response.tasks : [];
+              this.centralTaskListRepo.next((response && response.tasks ) ? response.tasks : []);
 
      }));
+   }
+
+   getTaskRepoArray (){
+     return this.taskRepoArray;
    }
 }
