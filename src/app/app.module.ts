@@ -12,7 +12,7 @@ import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { TaskPageComponent } from './task-page/task-page.component';
 import { HomeService } from './home/home.service';
-import { TastCreateNewDialogComponent } from './task-page/create-new/tast-create-new-dialog/tast-create-new-dialog.component';
+import { TaskCreateDialogComponent } from './task-page/task-create-dialog/task-create-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { TastCreateNewDialogComponent } from './task-page/create-new/tast-create
     MainComponent,
     HomeComponent,
     TaskPageComponent,
-    TastCreateNewDialogComponent
+    TaskCreateDialogComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +32,7 @@ import { TastCreateNewDialogComponent } from './task-page/create-new/tast-create
     MaterialModule
   ],
   providers: [
-    HomeService 
+    HomeService
   ],
   bootstrap: [AppComponent]
 })

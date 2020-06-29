@@ -1,6 +1,6 @@
+import { Task } from './../task-page/task';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Task} from '../task-page/task';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 import {ApplicationConfig} from '../appconfig';
@@ -32,5 +32,28 @@ export class TaskSharedService {
      }));
    }
 
+   addNewTask(newTask : Task) : void {
 
+     let updatedTaskList = this.centralTaskListRepo.getValue().concat([newTask]);
+     debugger;
+     this.centralTaskListRepo.next(updatedTaskList);
+
+     var json = JSON.stringify(updatedTaskList);
+
+
+
+   }
+
+   writeFile (newTask :Task){
+    var theData = {
+      foo: "bar"
+    };
+    var theJSON = JSON.stringify(theData);
+    var uri = "data:application/json;charset=UTF-8," + encodeURIComponent(theJSON);
+
+    var a = document.createElement('a');
+    a.href = uri;
+    a.innerHTML = "Right-click and choose 'save as...'";
+    document.body.appendChild(a);
+}
 }

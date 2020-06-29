@@ -8,7 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {MatSort} from '@angular/material/sort';
 import {Task} from '../task-page/task';
 import {TaskSharedService} from '../shared/task-shared.service';
-import { TastCreateNewDialogComponent } from './create-new/tast-create-new-dialog/tast-create-new-dialog.component';
+import { TaskCreateDialogComponent } from './task-create-dialog/task-create-dialog.component';
 
 @Component({
   selector: 'app-task-page',
@@ -78,7 +78,7 @@ export class TaskPageComponent implements OnInit {
   }
   openCreateNewDialog(): void {
     debugger;
-    const creatNewDialog = this.matDialog.open(TastCreateNewDialogComponent, {
+    const creatNewDialog = this.matDialog.open(TaskCreateDialogComponent, {
       width: '250px',
       data: {}
     });
