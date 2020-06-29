@@ -8,6 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {MatSort} from '@angular/material/sort';
 import {Task} from '../task-page/task';
 import {TaskSharedService} from '../shared/task-shared.service';
+import { TastCreateNewDialogComponent } from './create-new/tast-create-new-dialog/tast-create-new-dialog.component';
 
 @Component({
   selector: 'app-task-page',
@@ -28,7 +29,7 @@ export class TaskPageComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private taskSharedService : TaskSharedService) {
+  constructor(private taskSharedService : TaskSharedService,private matDialog:MatDialog) {
 
   }
 
@@ -74,6 +75,18 @@ export class TaskPageComponent implements OnInit {
          break;
       }
    }
+  }
+  openCreateNewDialog(): void {
+    debugger;
+    const creatNewDialog = this.matDialog.open(TastCreateNewDialogComponent, {
+      width: '250px',
+      data: {}
+    });
+
+    creatNewDialog.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+
+    });
   }
 
 

@@ -12,13 +12,15 @@ import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { TaskPageComponent } from './task-page/task-page.component';
 import { HomeService } from './home/home.service';
+import { TastCreateNewDialogComponent } from './task-page/create-new/tast-create-new-dialog/tast-create-new-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     HomeComponent,
-    TaskPageComponent
+    TaskPageComponent,
+    TastCreateNewDialogComponent
   ],
   imports: [
     CommonModule,
