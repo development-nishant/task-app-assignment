@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {CommonModule} from "@angular/common";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,17 +10,18 @@ import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
-import { TasksComponent } from './tasks/tasks.component';
+import { TaskPageComponent } from './task-page/task-page.component';
 import { HomeService } from './home/home.service';
-
+import {LocalStorageService} from './utils/localstorage.service';
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     HomeComponent,
-    TasksComponent
+    TaskPageComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -28,7 +30,7 @@ import { HomeService } from './home/home.service';
     MaterialModule
   ],
   providers: [
-    HomeService
+    HomeService ,LocalStorageService
   ],
   bootstrap: [AppComponent]
 })

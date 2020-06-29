@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService} from './home.service';
 import { HttpClient } from '@angular/common/http';
-import {Task} from '../tasks/task';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

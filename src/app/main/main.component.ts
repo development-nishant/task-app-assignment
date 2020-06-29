@@ -23,7 +23,6 @@ export class MainComponent implements OnInit {
 
   this.homeService.teamTasksCountAsObservable.subscribe((count)=> {  
     this.teamTasksCount =  count;
-    debugger; 
   });
   }
 

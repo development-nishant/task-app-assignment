@@ -5,7 +5,7 @@
             <h1 class="md-toolbar-tools">Global Tasks</h1>
         </mat-toolbar>
         <div id="task-list">
-            <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%" fxLayoutAlign="center">
+            <div fxLayout="column" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
 
                 <mat-card id="task-card" *ngFor="let task of globalTasks;index as idx;">
                     <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
@@ -72,8 +72,6 @@
             </div>
         </div>
     </div>
-
-
 
     <div id="tast-list-panel">
         <mat-toolbar id="task-list-header">
