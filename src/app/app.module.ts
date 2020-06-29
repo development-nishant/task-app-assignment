@@ -12,7 +12,7 @@ import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { TaskPageComponent } from './task-page/task-page.component';
 import { HomeService } from './home/home.service';
-import {LocalStorageService} from './utils/localstorage.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +30,7 @@ import {LocalStorageService} from './utils/localstorage.service';
     MaterialModule
   ],
   providers: [
-    HomeService ,LocalStorageService
+    HomeService 
   ],
   bootstrap: [AppComponent]
 })

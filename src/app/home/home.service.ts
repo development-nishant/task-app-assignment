@@ -5,6 +5,7 @@ import { map, filter } from 'rxjs/operators';
 import {Task} from '../task-page/task';
 import {ApplicationConfig} from '../appconfig';
 import { BehaviorSubject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
