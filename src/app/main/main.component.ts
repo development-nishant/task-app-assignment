@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute,NavigationEnd,NavigationStart,NavigationError } from '@angular/router';
-import {HomeService} from '../home/home.service';
 import { TaskSharedService } from '../shared/task-shared.service';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -12,43 +11,37 @@ export class MainComponent implements OnInit {
   public myTasksCount :number = 0;
   public  teamTasksCount :number= 0;
 
-  constructor( private route: ActivatedRoute,private taskSharedService:TaskSharedService ) {
+  constructor( private taskSharedService:TaskSharedService ) {
 
    }
 
-
-
   ngOnInit() {
 
+      /***
+     This will trigger http API call to fetch all task list...Ideally this should be part of homecomponent
+       but in this assignment POC for demonstration purpose , I have called from one level up component so that data
+       will not be overriden by task.json in home screen after navigating back from add new task screen
+       */
+     this.taskSharedService.getAllTasks().subscribe(tasks=>{
+      console.log("Tasks loaded on application level!");
+    });
+
+    /*** Subscriber which observes tasks list array to increase counter after adding new task*/
     this.taskSharedService.centralTaskListRepoObservable.subscribe((tasks)=>{
-      debugger;
-this.myTasksCount = 0;
-this.teamTasksCount = 0;
+        this.myTasksCount = 0;
+        this.teamTasksCount = 0;
 
-tasks.forEach(obj=>{
+        tasks.forEach(obj=>{
 
-  if(obj.isGlobal){
-    this.teamTasksCount ++;
-  }
-  if(!obj.isGlobal && !obj.isLeader){
-    this.myTasksCount++;
-  }
-});
-}
+        if(obj.isGlobal){
+            this.teamTasksCount ++;
+        }
+        if(!obj.isGlobal && !obj.isLeader){
+            this.myTasksCount++;
+       }
+    });
+    }
 
     );
-/*
-  this.homeService.myTasksCountAsObservable.subscribe((count)=> {
-    this.myTasksCount =  count;
-
-  });
-
-  this.homeService.teamTasksCountAsObservable.subscribe((count)=> {
-    this.teamTasksCount =  count;
-  });
-  */
   }
-
-
-
 }

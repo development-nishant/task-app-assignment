@@ -15,16 +15,16 @@ export class HomeComponent implements OnInit {
   public personalTasks : any =[];
   public leaderTasks : any =[];
 
-  constructor(private homeService : HomeService , private taskSharedService : TaskSharedService ,private httpClient: HttpClient) {
+  constructor(private taskSharedService : TaskSharedService ,private httpClient: HttpClient) {
 
   }
 
   ngOnInit() {
 
     //this will trigger http API call to fetch all task list...
-    this.taskSharedService.getAllTasks().subscribe(resp=>{
+    /*this.taskSharedService.getAllTasks().subscribe(resp=>{
       console.log("Tasks loaded on application level!");
-    });
+    });*/
 
     // Previously task list array will be observed to separate the tasks based on the type...
     this.taskSharedService.centralTaskListRepoObservable.subscribe((tasks)=>{

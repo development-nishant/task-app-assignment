@@ -17,17 +17,21 @@ export class TaskSharedService {
   //Observable from above task list which can be subscribed wherever required (task list/task grid)
   public centralTaskListRepoObservable = this.centralTaskListRepo.asObservable();
 
+
   constructor(private httpClient: HttpClient) {
 
   }
 
   getAllTasks() : Observable<any> {
-
+  // Ajax request to fetch tasks list from API...
     return this.httpClient.get(ApplicationConfig.GET_TASKS_LIST_URL).pipe(
 
       map((response :any) => {
-
-              this.centralTaskListRepo.next((response && response.tasks ) ? response.tasks : []);
+        /**
+        * API data will be saved to centralTaskListRepo array as observable which will be observed
+        * by MainPanel task counter , Homescreen task list , Taskscreen grid
+        * */
+          this.centralTaskListRepo.next((response && response.tasks ) ? response.tasks : []);
 
      }));
    }
@@ -44,16 +48,5 @@ export class TaskSharedService {
 
    }
 
-   writeFile (newTask :Task){
-    var theData = {
-      foo: "bar"
-    };
-    var theJSON = JSON.stringify(theData);
-    var uri = "data:application/json;charset=UTF-8," + encodeURIComponent(theJSON);
 
-    var a = document.createElement('a');
-    a.href = uri;
-    a.innerHTML = "Right-click and choose 'save as...'";
-    document.body.appendChild(a);
-}
 }
