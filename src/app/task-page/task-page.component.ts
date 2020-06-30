@@ -46,6 +46,7 @@ export class TaskPageComponent implements OnInit {
       this.loadDataInTaskGrid(tasks);
       this.taskGridData = tasks;
     }
+
     );
   }
 
