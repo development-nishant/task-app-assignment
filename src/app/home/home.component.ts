@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService} from './home.service';
 import { HttpClient } from '@angular/common/http';
 import { TaskSharedService } from '../shared/task-shared.service';
 
@@ -22,9 +21,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     //this will trigger http API call to fetch all task list...
+
     /*this.taskSharedService.getAllTasks().subscribe(resp=>{
       console.log("Tasks loaded on application level!");
     });*/
+
 
     // Previously task list array will be observed to separate the tasks based on the type...
     this.taskSharedService.centralTaskListRepoObservable.subscribe((tasks)=>{
