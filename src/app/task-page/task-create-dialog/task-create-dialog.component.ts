@@ -12,6 +12,7 @@ import { ApplicationConfig } from '../../appconfig';
 })
 export class TaskCreateDialogComponent implements OnInit {
 
+  newTaskObj : any = {};
 
   constructor(
     public dialogRef: MatDialogRef<TaskCreateDialogComponent>,
@@ -26,8 +27,9 @@ export class TaskCreateDialogComponent implements OnInit {
     this.dialogRef.close();
   }
   onOKClick(): void{
-    let userObj = ApplicationConfig.USER_DATA;
-
+    let userObj = ApplicationConfig.LOGGED_IN_USER_DATA;
+    let tsk = this.newTaskObj;
+    debugger;
     let newTaskObj = {
       "text": "Newly created task",
     "isGlobal": userObj.isGlobal,

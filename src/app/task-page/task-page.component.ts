@@ -9,6 +9,7 @@ import {MatSort} from '@angular/material/sort';
 import {Task} from '../task-page/task';
 import {TaskSharedService} from '../shared/task-shared.service';
 import { TaskCreateDialogComponent } from './task-create-dialog/task-create-dialog.component';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-task-page',
@@ -40,44 +41,61 @@ export class TaskPageComponent implements OnInit {
 
 
     this.taskSharedService.centralTaskListRepoObservable.subscribe((tasks)=>{
-      this.loadDatainTaskGrid(tasks);
+
+      this.loadDataInTaskGrid(tasks);
+      this.taskGridData = tasks;
     }
     );
 
   }
 
-  loadDatainTaskGrid(tasks : Task[]){
+  loadDataInTaskGrid(tasks : Task[]){
+
     this.dataSource = new MatTableDataSource(tasks);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
   }
 
-  filterTaskSelect (event:Event){
-    debugger;
+  filterTaskSelect (event:Event , fltr:any){
 
-    switch(this.taskTypeFilterValue) {
+    let filteredData =[];
+
+
+    switch(fltr.value) {
       case "personal": {
-          let personalTasks = this.taskSharedService.centralTaskListRepoObservable
+
+        filteredData =  this.taskGridData.filter((task :Task) =>{
+          return (!task.isLeader && !task.isGlobal);
+        });
+
          break;
       }
       case "global": {
+        filteredData =  this.taskGridData.filter((task :Task) =>{
+          return task.isGlobal;
+        });
 
          break;
       }
       case "leader": {
+        filteredData =  this.taskGridData.filter((task :Task) =>{
+          return task.isLeader;
+        });
 
         break;
       }
 
       default: {
-
+         filteredData = this.taskGridData;
          break;
       }
+
    }
+
+      this.loadDataInTaskGrid(filteredData);
   }
   openCreateNewDialog(): void {
-    debugger;
+
     const creatNewDialog = this.matDialog.open(TaskCreateDialogComponent, {
       width: '250px',
       data: {}
@@ -87,6 +105,16 @@ export class TaskPageComponent implements OnInit {
       console.log('The dialog was closed');
 
     });
+  }
+  onStatusChecked(event,row){
+
+
+    if(row.isCompleted){
+      // Send record to API to save as completed in database
+    }else{
+      //cancel the action and mark as not complted again
+    }
+
   }
 
 

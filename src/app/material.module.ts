@@ -60,7 +60,9 @@ const materialModules = [
   MatButtonToggleModule,
   MatTreeModule,
   OverlayModule,
-  PortalModule
+  PortalModule,
+  MatInputModule,MatNativeDateModule,
+
 ];
 
 @NgModule({
@@ -70,6 +72,7 @@ const materialModules = [
   exports: [
     ...materialModules
   ],
+  providers:[]
 })
 export class MaterialModule {
 }

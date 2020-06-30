@@ -11,6 +11,7 @@ import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
 import { TaskPageComponent } from './task-page/task-page.component';
 import { TaskCreateDialogComponent } from './task-page/task-create-dialog/task-create-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TaskCreateDialogComponent } from './task-page/task-create-dialog/task-c
     CommonModule,
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
