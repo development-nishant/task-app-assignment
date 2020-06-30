@@ -7,5 +7,3 @@ export interface Task {
     start : string;
     end:string;
   }
-
-  
