@@ -1,13 +1,23 @@
-<div style="widows: 500px;">
+<div>
     <h1 mat-dialog-title>Create New Task</h1>
     <div mat-dialog-content>
 
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="outline">
             <mat-label>Task content</mat-label>
             <textarea matInput [(ngModel)]="newTaskObj.text"></textarea>
         </mat-form-field>
 
         <mat-checkbox [(ngModel)]="newTaskObj.isCompleted">Completed</mat-checkbox>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Start date">
+                <input matEndDate placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
 
     </div>
     <div mat-dialog-actions>

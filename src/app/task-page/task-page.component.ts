@@ -97,13 +97,12 @@ export class TaskPageComponent implements OnInit {
   openCreateNewDialog(): void {
 
     const creatNewDialog = this.matDialog.open(TaskCreateDialogComponent, {
-      width: '250px',
+      width: '500px',
       data: {}
     });
 
     creatNewDialog.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-
     });
   }
   onStatusChecked(event,row){
