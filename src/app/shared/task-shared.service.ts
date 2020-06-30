@@ -42,11 +42,7 @@ export class TaskSharedService {
      debugger;
      this.centralTaskListRepo.next(updatedTaskList);
 
-     var json = JSON.stringify(updatedTaskList);
-
-
-
-   }
+    }
 
 
 }

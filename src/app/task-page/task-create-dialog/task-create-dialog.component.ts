@@ -12,7 +12,7 @@ import { ApplicationConfig } from '../../appconfig';
 })
 export class TaskCreateDialogComponent implements OnInit {
 
-  newTaskObj : any = {};
+  newTaskObj : any ={};
 
   constructor(
     public dialogRef: MatDialogRef<TaskCreateDialogComponent>,
@@ -27,18 +27,23 @@ export class TaskCreateDialogComponent implements OnInit {
     this.dialogRef.close();
   }
   onOKClick(): void{
-    let userObj = ApplicationConfig.LOGGED_IN_USER_DATA;
-    let tsk = this.newTaskObj;
-    debugger;
-    let newTaskObj = {
-      "text": "Newly created task",
-    "isGlobal": userObj.isGlobal,
-    "isLeader":userObj.isGlobal,
-    "creator": userObj.name,
-    "isCompleted": false,
-    "start":"2019-09-07",
-    "end":"2019-09-10"}
 
-    this.taskSharedService.addNewTask(newTaskObj);
+    let userObj = ApplicationConfig.LOGGED_IN_USER_DATA;
+    let taskNgModel = this.newTaskObj;
+    let startd = taskNgModel.start.toDateString();
+    let endd = taskNgModel.end.toDateString();
+
+      let newTask =  new TaskModel();
+      newTask.text= taskNgModel['text'];
+      newTask.creator= userObj['name'];
+      newTask.isCompleted= taskNgModel['text'];
+      newTask.isLeader= userObj['isLeader'];
+      newTask.isGlobal= userObj['isGlobal'];
+      newTask.start= startd;//taskNgModel['text'];
+      newTask.end= endd;//taskNgModel['text'];
+      debugger;
+      this.taskSharedService.addNewTask(newTask);
+
+      this.dialogRef.close();
   }
 }

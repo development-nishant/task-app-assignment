@@ -4,6 +4,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 
 import {MatDialog} from '@angular/material/dialog';
+import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
 
 import {MatSort} from '@angular/material/sort';
 import {Task} from '../task-page/task';
@@ -30,7 +31,8 @@ export class TaskPageComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private taskSharedService : TaskSharedService,private matDialog:MatDialog) {
+  constructor(private taskSharedService : TaskSharedService,private matDialog:MatDialog,
+    private _snackBar: MatSnackBar) {
 
   }
 
@@ -46,7 +48,6 @@ export class TaskPageComponent implements OnInit {
       this.taskGridData = tasks;
     }
     );
-
   }
 
   loadDataInTaskGrid(tasks : Task[]){
@@ -60,8 +61,8 @@ export class TaskPageComponent implements OnInit {
 
     let filteredData =[];
 
-
     switch(fltr.value) {
+
       case "personal": {
 
         filteredData =  this.taskGridData.filter((task :Task) =>{
@@ -98,6 +99,7 @@ export class TaskPageComponent implements OnInit {
 
     const creatNewDialog = this.matDialog.open(TaskCreateDialogComponent, {
       width: '500px',
+      height: '400px',
       data: {}
     });
 
@@ -110,6 +112,9 @@ export class TaskPageComponent implements OnInit {
 
     if(row.isCompleted){
       // Send record to API to save as completed in database
+      this._snackBar.open("Marked as completed!","");
+
+
     }else{
       //cancel the action and mark as not complted again
     }
