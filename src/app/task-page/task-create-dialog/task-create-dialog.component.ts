@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TaskModel } from '../task.model';
 import { TaskSharedService } from '../../shared/task-shared.service';
 import { ApplicationConfig } from '../../appconfig';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-task-create-dialog',
@@ -17,7 +18,7 @@ export class TaskCreateDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<TaskCreateDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public taskObj: Task,
-    private taskSharedService : TaskSharedService
+    private taskSharedService : TaskSharedService,private _snackBar: MatSnackBar
     ) {}
 
     ngOnInit(): void {
@@ -45,5 +46,6 @@ export class TaskCreateDialogComponent implements OnInit {
       this.taskSharedService.addNewTask(newTask);
 
       this.dialogRef.close();
+      this._snackBar.open(ApplicationConfig.TASK_ADD_MESSAGE,"OK");
   }
 }

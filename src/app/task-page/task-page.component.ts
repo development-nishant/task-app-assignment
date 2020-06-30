@@ -41,7 +41,6 @@ export class TaskPageComponent implements OnInit {
     /* Following code will subcribe to previously stored tasklist observable...
     and display the data in grid..this will not trigger additional API call to fetch the data..*/
 
-
     this.taskSharedService.centralTaskListRepoObservable.subscribe((tasks)=>{
 
       this.loadDataInTaskGrid(tasks);
@@ -92,7 +91,6 @@ export class TaskPageComponent implements OnInit {
       }
 
    }
-
       this.loadDataInTaskGrid(filteredData);
   }
   openCreateNewDialog(): void {
@@ -109,14 +107,17 @@ export class TaskPageComponent implements OnInit {
   }
   onStatusChecked(event,row){
 
-
     if(row.isCompleted){
-      // Send record to API to save as completed in database
-      this._snackBar.open("Marked as completed!","");
+      // Send record to API to save as completed in database..
 
+      /***In this POC, as we don't have API to update task in database , we are directly updating in grid data object
+       * by using ngModel feature. The record points to same referene in memory so it is immediately reflected in grid and
+       * to other subscribers of the task list observable
+       */
+      this._snackBar.open(ApplicationConfig.TASK_MARKED_DONE_MESSAGE,"OK");
 
     }else{
-      //cancel the action and mark as not complted again
+      //marked as not completed logic if any requirement...
     }
 
   }
