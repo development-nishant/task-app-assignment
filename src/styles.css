@@ -56,15 +56,23 @@ body {
 }
 
 .complete-color {
-    color: #229954;
+    color: green;
 }
 
 .incomplete-color {
-    color: #EC7063;
+    color: red;
 }
 
 .creator-color {
     color: #5F6A6A
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
