@@ -133,7 +133,6 @@ export class TaskComponent implements OnInit {
      };
 
     this.matDialog.open(AlertDialogComponent, {
-       width: '500px',
        data: alertDialogModel
      }
     );
