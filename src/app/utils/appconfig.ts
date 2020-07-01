@@ -19,8 +19,9 @@ export class ApplicationConfig {
 
     public static TASK_ADD_MESSAGE :string = "New task added successfully !";
     public static TASK_MARKED_DONE_MESSAGE :string = "Task marked as completed successfully !";
-
-
+    public static CREATE_NEW_TITLE :string =  "Create New Task";
+    public static CONFIRM_TITLE :string = "Confirmation";
+    public static MARK_CONFIRM_DIALOG :string =  "Do you want to mark this task as completed ?";
 
 
 }

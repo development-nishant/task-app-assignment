@@ -1,0 +1,16 @@
+<div>
+    <form #form="ngForm">
+        <h1 mat-dialog-title> {{data.title}}</h1>
+
+        <mat-dialog-content mat-dialog-content>
+            <div>{{data.message}}</div>
+
+        </mat-dialog-content>
+
+        <div mat-dialog-actions>
+
+            <button mat-button (click)="onActionClick($event,data.okFn) ">OK</button>
+            <button mat-button (click)="onActionClick($event,data.cancelFn) ">CANCEL</button>
+        </div>
+    </form>
+</div>

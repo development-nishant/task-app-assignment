@@ -8,9 +8,11 @@ import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
 
 import {MatSort} from '@angular/material/sort';
 import {Task} from '../task/task';
-import {TaskSharedService} from '../shared/task-shared.service';
+import {TaskSharedService} from '../shared/services/task-shared.service';
 import { TaskCreateDialogComponent } from './task-create-dialog/task-create-dialog.component';
 import { filter } from 'rxjs/operators';
+import { AlertDialogComponent } from '../shared/components/alert-dialog/alert-dialog.component';
+import { AlertDialogModel } from '../shared/components/alert-dialog/alert-dialog-model';
 
 @Component({
   selector: 'app-task',
@@ -98,8 +100,8 @@ export class TaskComponent implements OnInit {
 
     const creatNewDialog = this.matDialog.open(TaskCreateDialogComponent, {
       width: '500px',
-      height: '400px',
-      data: {}
+    //  height: '400px',
+      data: {title : ApplicationConfig.CREATE_NEW_TITLE}
     });
 
     creatNewDialog.afterClosed().subscribe(result => {
@@ -107,21 +109,34 @@ export class TaskComponent implements OnInit {
     });
   }
   onStatusChecked(event,row){
+    // Send record to API to save as completed in database..
 
-    if(row.isCompleted){
-      // Send record to API to save as completed in database..
+    /***In this POC, as we don't have API to update task in database , we are directly updating in grid data object
+     * by using ngModel feature. The record points to same referene in memory so it is immediately reflected in grid and
+     * to other subscribers of the task list observable
+     */
 
-      /***In this POC, as we don't have API to update task in database , we are directly updating in grid data object
-       * by using ngModel feature. The record points to same referene in memory so it is immediately reflected in grid and
-       * to other subscribers of the task list observable
-       */
-      this._snackBar.open(ApplicationConfig.TASK_MARKED_DONE_MESSAGE,"OK");
+     /***NgModel is commented in html to perform manual action to demonstrate the logic */
 
-    }else{
-      //marked as not completed logic if any requirement...
-    }
+     let alertDialogModel = new AlertDialogModel();
+     alertDialogModel.title = ApplicationConfig.CONFIRM_TITLE;
+     alertDialogModel.message = ApplicationConfig.MARK_CONFIRM_DIALOG;
+     alertDialogModel.okFn = ()=>{
+         // Here in actual appication , we have to send task record to API to save it in database
+          row.isCompleted = true;
+          this._snackBar.open(ApplicationConfig.TASK_MARKED_DONE_MESSAGE,"OK");
+     };
+     alertDialogModel.cancelFn = ()=>{
+         // Set ngModel value again as false;
+          row.isCompleted = false;
+          event.target.checked = false;
+     };
+
+    this.matDialog.open(AlertDialogComponent, {
+       width: '500px',
+       data: alertDialogModel
+     }
+    );
 
   }
-
-
-}
+ }

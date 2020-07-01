@@ -76,8 +76,8 @@
                 <ng-container matColumnDef="isCompleted">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> <b>Status </b></th>
                     <td mat-cell *matCellDef="let row">
-
-                        <input type="checkbox" [checked]="row.isCompleted" [(ngModel)]="row.isCompleted" [disabled]="row.isCompleted" (change)="onStatusChecked($event,row)">
+                        <!--[(ngModel)]="row.isCompleted"-->
+                        <input type="checkbox" [checked]="row.isCompleted" [disabled]="row.isCompleted" (change)="onStatusChecked($event,row)">
 
 
                         <span [style.color]="row.isCompleted ?'green':'red'">{{row.isCompleted ? 'Completed':'Not completed'}}</span>

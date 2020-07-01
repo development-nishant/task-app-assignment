@@ -1,9 +1,9 @@
-import { Task } from './../task/task';
+import { Task } from './../../task/task';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
-import { ApplicationConfig } from '../utils/appconfig';
+import { ApplicationConfig } from '../../utils/appconfig';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({

@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { TaskComponent } from './task/task.component';
 import { TaskCreateDialogComponent } from './task/task-create-dialog/task-create-dialog.component';
 import { FormsModule } from '@angular/forms';
+import { AlertDialogComponent } from './shared/components/alert-dialog/alert-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     MainComponent,
     HomeComponent,
     TaskComponent,
-    TaskCreateDialogComponent
+    TaskCreateDialogComponent,
+    AlertDialogComponent
   ],
   imports: [
     CommonModule,

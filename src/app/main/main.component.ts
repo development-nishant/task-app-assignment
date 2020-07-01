@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskSharedService } from '../shared/task-shared.service';
+import { TaskSharedService } from '../shared/services/task-shared.service';
 
 @Component({
   selector: 'app-main',
