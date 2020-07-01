@@ -4,7 +4,7 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 
 import {MatDialog} from '@angular/material/dialog';
-import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar} from '@angular/material/snack-bar';
 
 import {MatSort} from '@angular/material/sort';
 import {Task} from '../task/task';
@@ -53,7 +53,7 @@ export class TaskComponent implements OnInit {
   }
 
   loadDataInTaskGrid(tasks : Task[]){
-
+    // loads data in grid store...
     this.dataSource = new MatTableDataSource(tasks);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -61,6 +61,7 @@ export class TaskComponent implements OnInit {
 
   filterTaskSelect (event:Event , fltr:any){
 
+    // Filter function to filter data in grid...
     let filteredData =[];
 
     switch(fltr.value) {
@@ -98,9 +99,9 @@ export class TaskComponent implements OnInit {
   }
   openCreateNewDialog(): void {
 
+    // Opens dialog to take new task entries...
     const creatNewDialog = this.matDialog.open(TaskCreateDialogComponent, {
       width: '500px',
-    //  height: '400px',
       data: {title : ApplicationConfig.CREATE_NEW_TITLE}
     });
 
@@ -109,6 +110,7 @@ export class TaskComponent implements OnInit {
     });
   }
   onStatusChecked(event,row){
+
     // Send record to API to save as completed in database..
 
     /***In this POC, as we don't have API to update task in database , we are directly updating in grid data object
@@ -118,6 +120,7 @@ export class TaskComponent implements OnInit {
 
      /***NgModel is commented in html to perform manual action to demonstrate the logic */
 
+     // AlertDialogModel class is defined to take specific AlertDialogComponent related data to feed...
      let alertDialogModel = new AlertDialogModel();
      alertDialogModel.title = ApplicationConfig.CONFIRM_TITLE;
      alertDialogModel.message = ApplicationConfig.MARK_CONFIRM_DIALOG;
@@ -132,6 +135,7 @@ export class TaskComponent implements OnInit {
           event.target.checked = false;
      };
 
+    // Data passed to generic dialog component...
     this.matDialog.open(AlertDialogComponent, {
        data: alertDialogModel
      }

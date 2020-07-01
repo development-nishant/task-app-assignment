@@ -29,9 +29,10 @@ export class HomeComponent implements OnInit {
 
     // Previously task list array will be observed to separate the tasks based on the type...
     this.taskSharedService.centralTaskListRepoObservable.subscribe((tasks)=>{
+
+      // Reset required when user navigates back from tasks screen...
       this.resetTaskLists();
       // filter functionsa can be used but that will 3x iterations for each type.. so forEach used ..
-      console.log("Separating tasks!!");
 
       if(tasks){
 
