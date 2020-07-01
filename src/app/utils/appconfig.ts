@@ -8,7 +8,7 @@ export class ApplicationConfig {
 
     public static GET_TASKS_LIST_URL : string = "assets/json/tasks.json";
 
-    public static TASK_GRID_COLUMNS : any = ['idx','isCompleted', 'type','text', 'creator','start', 'end'];
+    public static TASK_GRID_COLUMNS : any = ['idx','isCompleted','text', 'type', 'creator','start', 'end'];
 
     public static TASK_TYPE_FILTER : any = [
       {value: 'all', viewValue: 'All'},

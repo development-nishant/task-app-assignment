@@ -1,4 +1,4 @@
-import { ApplicationConfig } from './../appconfig';
+import { ApplicationConfig } from '../utils/appconfig';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
@@ -7,18 +7,18 @@ import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBarModule, MatSnackBar} from '@angular/material/snack-bar';
 
 import {MatSort} from '@angular/material/sort';
-import {Task} from '../task-page/task';
+import {Task} from '../task/task';
 import {TaskSharedService} from '../shared/task-shared.service';
 import { TaskCreateDialogComponent } from './task-create-dialog/task-create-dialog.component';
 import { filter } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-task-page',
-  templateUrl: './task-page.component.html',
-  styleUrls: ['./task-page.component.scss']
+  selector: 'app-task',
+  templateUrl: './task.component.html',
+  styleUrls: ['./task.component.scss']
 })
 
-export class TaskPageComponent implements OnInit {
+export class TaskComponent implements OnInit {
 
   taskGridColumns: string[] = ApplicationConfig.TASK_GRID_COLUMNS;
   dataSource: MatTableDataSource<Task>;
@@ -125,5 +125,3 @@ export class TaskPageComponent implements OnInit {
 
 
 }
-
-

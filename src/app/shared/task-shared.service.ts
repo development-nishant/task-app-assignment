@@ -1,9 +1,9 @@
-import { Task } from './../task-page/task';
+import { Task } from './../task/task';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
-import {ApplicationConfig} from '../appconfig';
+import { ApplicationConfig } from '../utils/appconfig';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -16,7 +16,6 @@ export class TaskSharedService {
 
   //Observable from above task list which can be subscribed wherever required (task list/task grid)
   public centralTaskListRepoObservable = this.centralTaskListRepo.asObservable();
-
 
   constructor(private httpClient: HttpClient) {
 
@@ -36,11 +35,9 @@ export class TaskSharedService {
      }));
    }
 
-   addNewTask(newTask : Task) : void {
+   addNewTask(newTaskObj : Task) : void {
 
-     let updatedTaskList = this.centralTaskListRepo.getValue().concat([newTask]);
-     debugger;
-     this.centralTaskListRepo.next(updatedTaskList);
+     this.centralTaskListRepo.next(this.centralTaskListRepo.getValue().concat([newTaskObj]));
 
     }
 

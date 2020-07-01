@@ -4,6 +4,8 @@ export class TaskModel {
   private _isLeader: boolean;
   private _creator: string;
   private _isCompleted: boolean;
+  private _start: string;
+  private _end: string;
 
   get text(): string {
     return this._text;
@@ -60,9 +62,6 @@ export class TaskModel {
   set end(value: string) {
     this._end = value;
   }
-
-  private _start: string;
-  private _end: string;
 
   /*constructor(text,creator,isCompleted,isGlobal,isLeader,start,end) {
 

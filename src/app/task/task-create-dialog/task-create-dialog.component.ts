@@ -3,7 +3,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TaskModel } from '../task.model';
 import { TaskSharedService } from '../../shared/task-shared.service';
-import { ApplicationConfig } from '../../appconfig';
+import { ApplicationConfig } from '../../utils/appconfig';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -29,23 +29,26 @@ export class TaskCreateDialogComponent implements OnInit {
   }
   onOKClick(): void{
 
-    let userObj = ApplicationConfig.LOGGED_IN_USER_DATA;
-    let taskNgModel = this.newTaskObj;
-    let startd = taskNgModel.start.toDateString();
-    let endd = taskNgModel.end.toDateString();
+      let userObj = ApplicationConfig.LOGGED_IN_USER_DATA;
+      let taskNgModel = this.newTaskObj;
 
       let newTask =  new TaskModel();
-      newTask.text= taskNgModel['text'];
+
+      /*** Assumed that loggin user is creating the task so Personal details are taken from userdetails directly... */
       newTask.creator= userObj['name'];
-      newTask.isCompleted= taskNgModel['text'];
       newTask.isLeader= userObj['isLeader'];
       newTask.isGlobal= userObj['isGlobal'];
-      newTask.start= startd;//taskNgModel['text'];
-      newTask.end= endd;//taskNgModel['text'];
-      debugger;
+
+
+      newTask.text= taskNgModel['text'];
+      newTask.isCompleted= taskNgModel['isComplted'];
+      newTask.start= taskNgModel.start.toDateString();
+      newTask.end= taskNgModel.end.toDateString();
+
       this.taskSharedService.addNewTask(newTask);
 
       this.dialogRef.close();
+
       this._snackBar.open(ApplicationConfig.TASK_ADD_MESSAGE,"OK");
   }
 }

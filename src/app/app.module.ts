@@ -5,12 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { MaterialModule } from './material.module';
+import { MaterialModule } from './utils/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { HomeComponent } from './home/home.component';
-import { TaskPageComponent } from './task-page/task-page.component';
-import { TaskCreateDialogComponent } from './task-page/task-create-dialog/task-create-dialog.component';
+import { TaskComponent } from './task/task.component';
+import { TaskCreateDialogComponent } from './task/task-create-dialog/task-create-dialog.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     MainComponent,
     HomeComponent,
-    TaskPageComponent,
+    TaskComponent,
     TaskCreateDialogComponent
   ],
   imports: [
