@@ -79,8 +79,7 @@
                         <!--[(ngModel)]="row.isCompleted"-->
                         <input type="checkbox" [checked]="row.isCompleted" [disabled]="row.isCompleted" (change)="onStatusChecked($event,row)">
 
-
-                        <span [style.color]="row.isCompleted ?'green':'red'">{{row.isCompleted ? 'Completed':'Not completed'}}</span>
+                        <span [style.color]="row.isCompleted ?'green':'red'">  {{row.isCompleted ? 'Completed':'Not completed'}}</span>
                     </td>
                 </ng-container>
 
