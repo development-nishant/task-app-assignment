@@ -6,7 +6,8 @@ export class TaskModel {
   private _isCompleted: boolean;
   private _start: string;
   private _end: string;
-
+  constructor() {
+  }
   get text(): string {
     return this._text;
   }

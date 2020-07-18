@@ -1,25 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { TaskSharedService } from '../shared/services/task-shared.service';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {TaskSharedService} from '../shared/services/task-shared.service';
+import {HomeProto} from './home.proto';
 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  changeDetection :ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent extends HomeProto implements OnInit {
 
   public globalTasks : any =[];
   public personalTasks : any =[];
   public leaderTasks : any =[];
+  public msg: string = "";
 
   constructor(private taskSharedService : TaskSharedService ,private httpClient: HttpClient) {
-
+  super();
   }
 
-  ngOnInit() {
-
+  ngOnInit() :void {
+    this.msg = this.getMessageProto();
     //this will trigger http API call to fetch all task list...
 
     /*this.taskSharedService.getAllTasks().subscribe(resp=>{

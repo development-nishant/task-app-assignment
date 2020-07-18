@@ -13,6 +13,7 @@ import { TaskComponent } from './task/task.component';
 import { TaskCreateDialogComponent } from './task/task-create-dialog/task-create-dialog.component';
 import { FormsModule } from '@angular/forms';
 import { AlertDialogComponent } from './shared/components/alert-dialog/alert-dialog.component';
+import { MiscComponent } from './misc/misc/misc.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AlertDialogComponent } from './shared/components/alert-dialog/alert-dia
     HomeComponent,
     TaskComponent,
     TaskCreateDialogComponent,
-    AlertDialogComponent
+    AlertDialogComponent,
+    MiscComponent
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,8 @@ import { AlertDialogComponent } from './shared/components/alert-dialog/alert-dia
   providers: [
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[],
+  entryComponents:[]
 })
 export class AppModule { }
